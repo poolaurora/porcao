@@ -24,9 +24,11 @@ class StatsOverview extends BaseWidget
             return Infos::whereDate('created_at', Carbon::today()->subDays($day))->count();
         })->toArray();
 
+        $usersWithoutRolesCount = User::doesntHave('roles')->count();
+
         // Criar os objetos Stat com os dados adequados
         return [
-            Stat::make('Usuários', User::count())
+            Stat::make('Usuários', $usersWithoutRolesCount)
                 ->color('success')
                 ->chart($statsUser), // Inclui os dados de contagem diária no gráfico
 
