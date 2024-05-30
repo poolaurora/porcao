@@ -39,7 +39,7 @@ class TopRevendedores extends BaseWidget
                 ->whereNull('model_has_roles.role_id') // Filtrar usuários que não têm roles associadas
                 ->groupBy('users.id')
                 ->orderBy('purchases_count', 'desc') // Ordenar pela quantidade de compras, maior primeiro
-                ->limit(5) // Mostrar apenas os 5 primeiros
+                ->limit(3) // Mostrar apenas os 5 primeiros
         )
         ->columns([
             TextColumn::make('name')
