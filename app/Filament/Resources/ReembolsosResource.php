@@ -38,10 +38,12 @@ class ReembolsosResource extends Resource
 
             Forms\Components\Textarea::make('description')
                 ->label('Descrição')
+                ->placeholder('A info id {id da info} foi solicitada o reembolso, após uma analise vemos a info estava {problema da info}')
                 ->required(),
 
             Forms\Components\TextInput::make('chave_pix')
                 ->label('Chave PIX')
+                ->placeholder('Especifique a chave e o tipo da chave')
                 ->required(),
         ]);
 }

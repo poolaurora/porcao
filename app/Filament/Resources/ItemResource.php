@@ -78,11 +78,16 @@ class ItemResource extends Resource
                     ->label('Pedir Troca')
                     ->color('info')
                     ->action(function ($record) {
-                        return redirect("https://wa.me/5531947128422?text=Ol%C3%A1+quero+efetuar+a+troca+da+info+de+id%3A+".$record->itemable->id."");
+                        return redirect("https://wa.me/553195976109?text=Ol%C3%A1+quero+efetuar+a+troca+da+info+de+id%3A+".$record->itemable->id."");
                     })->visible(function ($record) {
-                        // Verificar se o `created_at` está dentro dos últimos 15 minutos
-                        return $record->created_at->diffInMinutes(now()) < 15;
-                    }),
+                        if ($record->itemable && ($record->itemable->categoria === "consultavel" || $record->itemable->categoria === "consultada")) {
+                            return $record->created_at->diffInHours(now()) < 2;
+                        }                        
+                        elseif ($record->itemable && $record->itemable->categoria === "full") {
+                            return $record->created_at->diffInMinutos(now()) < 15;
+                        }
+                        return false;
+                    }),                    
                 Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([

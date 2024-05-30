@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Redirect;
 use Filament\Tables\Actions\ButtonAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Support\Facades\View;
 
 class ConsultaveisResource extends Resource
 {
@@ -121,7 +122,8 @@ class ConsultaveisResource extends Resource
                     })
                     ->requiresConfirmation() // Solicita confirmação antes de executar a ação
                     ->modalHeading('Confirmar Compra')
-                    ->modalSubheading('Você tem certeza que deseja realizar esta compra?'),
+                    ->modalSubheading('Você tem certeza que deseja realizar esta compra?')
+                    ->modalContent(View::make('modals.confirmar_compra')),
                     Tables\Actions\EditAction::make(),
                     Tables\Actions\DeleteAction::make(),
             ]);

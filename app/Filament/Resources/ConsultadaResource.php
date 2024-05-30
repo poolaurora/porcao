@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Redirect;
 use Filament\Tables\Actions\ButtonAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Support\Facades\View;
 
 class ConsultadaResource extends Resource
 {
@@ -117,19 +118,19 @@ class ConsultadaResource extends Resource
         ])
             ->actions([
                 ButtonAction::make('comprar')
-                    ->label('Comprar')
-                    ->action(function ($record) {
-                        // Este callback só será chamado após o usuário confirmar no modal
-                        return redirect()->route('create.payment', [
-                            'id' => $record->id, 
-                            'type' => 'consultada'
-                        ]);
-                    })
-                    ->requiresConfirmation() // Solicita confirmação antes de executar a ação
-                    ->modalHeading('Confirmar Compra')
-                    ->modalSubheading('Você tem certeza que deseja realizar esta compra?'),
-                    Tables\Actions\EditAction::make(),
-                    Tables\Actions\DeleteAction::make(),
+                ->label('Comprar')
+                ->action(function ($record) {
+                    // Este callback só será chamado após o usuário confirmar no modal
+                    return redirect()->route('create.payment', [
+                        'id' => $record->id, 
+                        'type' => 'consultada'
+                    ]);
+                })
+                ->requiresConfirmation() // Solicita confirmação antes de executar a ação
+                ->modalHeading('Confirmar Compra')
+                ->modalContent(View::make('modals.confirmar_compra')),
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ]);
     }
 
