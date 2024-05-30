@@ -38,7 +38,7 @@ class ReembolsosResource extends Resource
 
             Forms\Components\Textarea::make('description')
                 ->label('Descrição')
-                ->placeholder('A info id {id da info} foi solicitada o reembolso, após uma analise vemos a info estava {problema da info}')
+                ->placeholder('Informar ID da info e o problema em questão.')
                 ->required(),
 
             Forms\Components\TextInput::make('chave_pix')

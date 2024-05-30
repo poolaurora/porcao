@@ -23,6 +23,7 @@ use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Tables\Actions\ButtonAction;
+use Illuminate\Support\Facades\View;
 
 
 class ItemResource extends Resource
@@ -65,6 +66,9 @@ class ItemResource extends Resource
             ->actions([
                 ButtonAction::make('view')
                     ->label('Ver Informações')
+                    ->modalHeading('Confirmar')
+                    ->requiresConfirmation()
+                    ->modalContent(View::make('modals.confirmar_compra'))
                     ->action(function ($record) {
                         // Este callback só será chamado após o usuário confirmar no modal
                         return redirect()->route('view.info', [

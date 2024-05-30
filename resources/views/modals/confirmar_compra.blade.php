@@ -1,4 +1,4 @@
-<div class="text-xs mt-2">
+<div class="text-base mt-2">
     <div class="text-base">
     <span>Ao clicar em <strong>Confirmar você está de acordo com os seguintes termos:</strong></span>
     </div>

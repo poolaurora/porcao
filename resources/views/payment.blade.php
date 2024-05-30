@@ -100,7 +100,7 @@
             const currentPageId = window.location.pathname.split('/').pop(); // Captura o ID da URL
             if (data.pedidoId == currentPageId) {
                 // O ID do evento corresponde ao ID da página, então você pode redirecionar ou atualizar a página.
-                window.location.href = `/payment/success/${data.pedidoId}`;
+                window.location.href = `/payment/sucess/${data.pedidoId}`;
             }
         });
 });
