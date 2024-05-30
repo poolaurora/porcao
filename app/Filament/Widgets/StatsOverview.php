@@ -30,7 +30,7 @@ class StatsOverview extends BaseWidget
                 ->color('success')
                 ->chart($statsUser), // Inclui os dados de contagem diária no gráfico
 
-            Stat::make('Infos No Painel', Infos::count())
+            Stat::make('Infos No Painel', Infos::where('is_published', 1)->count())
             ->color('success')
             ->chart($statsInfo),
 
