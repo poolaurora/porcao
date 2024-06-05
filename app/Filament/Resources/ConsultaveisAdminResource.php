@@ -126,8 +126,7 @@ class ConsultaveisAdminResource extends Resource
                                 ]),
                         ]),
                 ]),
-        ])
-        ->defaultSort('created_at', 'desc');    
+            ]);  
     }
 
     public static function table(Table $table): Table
@@ -170,7 +169,7 @@ class ConsultaveisAdminResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])->defaultSort('created_at', 'asc');
     }
 
     public static function getRelations(): array
